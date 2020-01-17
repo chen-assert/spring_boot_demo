@@ -1,0 +1,45 @@
+<html>
+<head>
+    <div th:replace="includes/header::script"></div>
+    <title>test</title>
+</head>
+<body>
+<div id="img_div">
+    <img th:fragment="img" th:src="@{${'/img/'+img_name+'.png'}}"/>
+</div>
+<br>
+<form onsubmit="return mySubmitFunction(event)" method="post" id="form1">
+    <input type="text" name="ans" id="ans"/>
+    <input type="submit">
+</form>
+</body>
+</html>
+<script>
+    function mySubmitFunction(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/test",
+            data: JSON.stringify(objectifyForm($("#form1").serializeArray())),//...
+            cache: false,
+            success: function (data) {
+                console.log("do");
+                $('#img_div').html(data);
+            },
+            error: function (e) {
+                console.log(e);
+                console.log("error?");
+            }
+        });
+        return false;
+    }
+
+    function objectifyForm(formArray) {//serialize data function
+        var returnArray = {};
+        for (var i = 0; i < formArray.length; i++) {
+            returnArray[formArray[i]['name']] = formArray[i]['value'];
+        }
+        return returnArray;
+    }
+</script>

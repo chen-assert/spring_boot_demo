@@ -5,12 +5,18 @@
 </head>
 <body>
 <div id="img_div">
-    <img th:fragment="img" th:src="@{${'/img/'+img_name}}"/>
+    <img th:fragment="img" width="800" th:src="@{${'/img/'+img_name}}"/>
 </div>
 <br>
 <form onsubmit="return mySubmitFunction(event)" method="post" id="form1">
-    <input type="text" name="ans" id="ans"/>
-    <input type="submit">
+
+</form>
+<form onsubmit="return mySubmitFunction(event)" method="post" id="form1">
+    <div class="form-group">
+        <label for="ans">Answer</label>
+        <input type="text" name="ans" id="ans"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </body>
 </html>

@@ -37,7 +37,11 @@ public class DemoApplication implements CommandLineRunner {
     public void run(String... arg0) throws Exception {
         System.out.println("Hello world from Command Line Runner");
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        img_resources = resolver.getResources("classpath*:static/img/*.png");
+        Resource[] png = resolver.getResources("classpath*:static/img/*.png");
+        Resource[] jpg = resolver.getResources("classpath*:static/img/*.jpg");
+        img_resources = new Resource[png.length + jpg.length];
+        System.arraycopy(png, 0, img_resources, 0, png.length);
+        System.arraycopy(jpg, 0, img_resources, png.length, jpg.length);
         //System.out.println(resources[0].getFilename());
     }
 }

@@ -1,0 +1,35 @@
+<html>
+<head>
+    <div th:replace="includes/header::script"></div>
+    <title>visual</title>
+</head>
+<body>
+<div align="center">
+    <div class="form-group">
+        <label for="data">data:</label>
+        <input type="number" name="data" id="data"/>
+        <button type="button" class="btn btn-primary">Push</button>
+        <button type="button" class="btn btn-primary">Pop</button>
+        <button type="button" class="btn btn-primary">Clear</button>
+    </div>
+    <!--    <svg width="500" height="500">-->
+    <!--        <rect x="0" y="0" width="300" height="200" fill="yellow"></rect>-->
+    <!--    </svg>-->
+    <div>
+        <img height="400" th:src="@{img/vi.png}"/>
+    </div>
+    <div>
+        <img th:src="@{img/vi2.png}"/>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function objectifyForm(formArray) {//serialize data function
+        var returnArray = {};
+        for (var i = 0; i < formArray.length; i++) {
+            returnArray[formArray[i]['name']] = formArray[i]['value'];
+        }
+        return returnArray;
+    }
+</script>

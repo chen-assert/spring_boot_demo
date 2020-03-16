@@ -5,12 +5,9 @@
 </head>
 <body>
 <div id="img_div">
-    <img th:fragment="img" width="800" th:src="@{${'/img/'+img_name}}"/>
+    <img th:fragment="img" height="600" th:src="@{${'/img/'+img_name}}"/>
 </div>
 <br>
-<form onsubmit="return mySubmitFunction(event)" method="post" id="form1">
-
-</form>
 <form onsubmit="return mySubmitFunction(event)" method="post" id="form1">
     <div class="form-group">
         <label for="ans">Answer</label>
